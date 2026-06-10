@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🐱 Pesan Untukmu</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#ffd6e7,#ffecc8);
+    font-family:Arial, sans-serif;
+    overflow:hidden;
+}
+
+/* HEARTS */
+.heart{
+    position:absolute;
+    font-size:22px;
+    animation:floatUp 5s linear infinite;
+    opacity:0.7;
+}
+
+@keyframes floatUp{
+    0%{transform:translateY(100vh); opacity:0;}
+    20%{opacity:1;}
+    100%{transform:translateY(-20vh); opacity:0;}
+}
+
+/* CONTAINER */
+.container{
+    text-align:center;
+    animation:float 3s ease-in-out infinite;
+}
+
+@keyframes float{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(-12px);}
+}
+
+/* BOARD */
+.board{
+    width:min(90vw,600px);
+    background:white;
+    padding:25px;
+    border-radius:20px;
+    border:4px solid #d8a56a;
+    box-shadow:0 10px 25px rgba(0,0,0,.15);
+    margin-bottom:20px;
+    min-height:200px;
+}
+
+.board h1{
+    color:#ff4f8b;
+    margin-bottom:15px;
+}
+
+.board p{
+    font-size:16px;
+    line-height:1.7;
+    color:#444;
+    text-align:left;
+}
+
+/* CAT */
+.cat{
+    position:relative;
+    width:220px;
+    margin:auto;
+}
+
+.face{
+    width:160px;
+    height:140px;
+    background:#ffb86b;
+    border-radius:50%;
+    margin:auto;
+    position:relative;
+}
+
+.ear{
+    position:absolute;
+    width:50px;
+    height:50px;
+    background:#ffb86b;
+    top:-18px;
+    transform:rotate(45deg);
+}
+
+.ear.left{left:20px;}
+.ear.right{right:20px;}
+
+.eye{
+    position:absolute;
+    width:14px;
+    height:14px;
+    background:#222;
+    border-radius:50%;
+    top:55px;
+}
+
+.eye.left{left:45px;}
+.eye.right{right:45px;}
+
+.nose{
+    width:14px;
+    height:12px;
+    background:pink;
+    border-radius:50%;
+    position:absolute;
+    top:80px;
+    left:73px;
+}
+
+.mouth{
+    position:absolute;
+    top:90px;
+    left:65px;
+    font-size:20px;
+}
+
+.body{
+    width:180px;
+    height:120px;
+    background:#ffb86b;
+    margin:auto;
+    margin-top:-10px;
+    border-radius:40px;
+}
+
+.paw{
+    width:30px;
+    height:60px;
+    background:#ffb86b;
+    position:absolute;
+    top:160px;
+    border-radius:20px;
+}
+
+.paw.left{left:35px;}
+.paw.right{right:35px;}
+
+/* BUTTON */
+.btn{
+    display:inline-block;
+    margin-top:15px;
+    padding:14px 26px;
+    background:#25D366;
+    color:white;
+    border-radius:50px;
+    text-decoration:none;
+    font-weight:bold;
+    box-shadow:0 5px 15px rgba(0,0,0,.2);
+    transition:0.3s;
+}
+
+.btn:hover{
+    transform:scale(1.05);
+}
+</style>
+</head>
+
+<body>
+
+<!-- hearts -->
+<div class="heart" style="left:10%;">💖</div>
+<div class="heart" style="left:25%; animation-delay:1s;">💕</div>
+<div class="heart" style="left:60%; animation-delay:2s;">💖</div>
+<div class="heart" style="left:80%; animation-delay:3s;">💕</div>
+
+<div class="container">
+
+    <!-- BOARD -->
+    <div class="board">
+        <h1>🐱 Haloo</h1>
+        <p id="typing"></p>
+
+        <a class="btn" href="https://wa.me/6288242233066" target="_blank">
+            💬 Balas Kucing Ini
+        </a>
+    </div>
+
+    <!-- CAT -->
+    <div class="cat">
+        <div class="face">
+            <div class="ear left"></div>
+            <div class="ear right"></div>
+            <div class="eye left"></div>
+            <div class="eye right"></div>
+            <div class="nose"></div>
+            <div class="mouth">ω</div>
+        </div>
+        <div class="body"></div>
+        <div class="paw left"></div>
+        <div class="paw right"></div>
+    </div>
+
+</div>
+
+<script>
+const text = `haloo bagaimana kabarnya hari ini semoga baik baikji.
+
+kemarin saya coba kasi space takutnya saya yang bikin nda nyaman atau mungkin malah risih kalau terus terusan ku chat, tpi kayaknya spacenya kejauhan deh haha...
+
+hari ini mauja mampir sebentar untuk memastikan kabarmu sapatau jga butuh teman cerita atau sedikit gangguan yang menyenangkan?`;
+
+let i = 0;
+const speed = 25;
+const typing = document.getElementById("typing");
+
+function typeWriter(){
+    if(i < text.length){
+        typing.innerHTML += text.charAt(i) === "\n" ? "<br>" : text.charAt(i);
+        i++;
+        setTimeout(typeWriter, speed);
+    }
+}
+
+window.onload = typeWriter;
+</script>
+
+</body>
+</html>
